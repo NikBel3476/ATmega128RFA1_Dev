@@ -22,3 +22,18 @@ License Information
 All contents of this repository are released under [Creative Commons Share-alike 3.0](http://creativecommons.org/licenses/by-sa/3.0/).
 
 Authors: Jim Lindblom @ SparkFun Electonics
+
+
+### Commands
+
+Upload bootloader with avrdude: `avrdude -c usbasp -p atmega128rfa1 -P usb -b 115200 -U flash:w:ATmegaBOOT_atmega128rfa1.hex -U lock:w:0x0f:m`  
+*.hex file located on the path: `firmware/Arduino/hardware/sparkfun/avr/bootloaders`
+
+> Latest gcc output larger bootloader .hex file from the same source code
+
+### Arduino IDE
+
+After adding the `hardware` directory to Arduino IDE according to the sparkfun guide you can burn
+bootloader from Arduino IDE with programmer.
+
+Just befere sketch uploading from ide you should reset mcu, otherwise bootloader will have time to run the already uploaded program and upload will fail.
